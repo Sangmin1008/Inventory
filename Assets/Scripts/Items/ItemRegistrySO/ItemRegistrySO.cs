@@ -26,4 +26,12 @@ public class ItemRegistrySO : ScriptableObject
         }
         return _lookup.TryGetValue(itemID, out var item) ? item : null;
     }
+    
+    public string GetStringID(int hash)
+    {
+        foreach (var kv in _lookup)
+            if (kv.Value.ItemID.GetHashCode() == hash)
+                return kv.Key;
+        return null;
+    }
 }

@@ -5,18 +5,18 @@ using UnityEngine.Serialization;
 public struct InventorySlot
 {
     public string ItemId;
-    public int quantity;
+    public int Quantity;
     
     public InventorySlot(string itemId, int quantity)
     {
         ItemId = itemId;
-        this.quantity = quantity;
+        this.Quantity = quantity;
     }
 
     public static InventorySlot Empty => new InventorySlot(string.Empty, 0);
     
     public static bool operator ==(InventorySlot slot1, InventorySlot slot2)
-        => (slot1.ItemId == slot2.ItemId) && (slot1.quantity == slot2.quantity);
+        => (slot1.ItemId == slot2.ItemId) && (slot1.Quantity == slot2.Quantity);
 
     public static bool operator !=(InventorySlot slot1, InventorySlot slot2)
         => !(slot1 == slot2);
@@ -32,7 +32,7 @@ public struct InventorySlot
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(ItemId, quantity);
+        return HashCode.Combine(ItemId, Quantity);
     }
     
     public static InventorySlot operator +(InventorySlot slot, (string itemId, int quantity) pair)
@@ -46,7 +46,7 @@ public struct InventorySlot
             if (slot.ItemId != pair.itemId)
                 throw new Exception("다른 아이템 종류를 더하려고 시도함");
 
-            return new InventorySlot(slot.ItemId, slot.quantity + pair.quantity);
+            return new InventorySlot(slot.ItemId, slot.Quantity + pair.quantity);
         }
     }
     
@@ -55,12 +55,12 @@ public struct InventorySlot
         if (slot.ItemId != pair.itemId)
             throw new Exception("다른 아이템 종류를 빼려고 시도함");
 
-        if (slot.quantity - pair.quantity < 0)
+        if (slot.Quantity - pair.quantity < 0)
             throw new Exception("슬롯 데이터는 개수를 음수로 가질 수 없음");
 
-        if (slot.quantity - pair.quantity == 0)
+        if (slot.Quantity - pair.quantity == 0)
             return InventorySlot.Empty;
 
-        return new InventorySlot(slot.ItemId, slot.quantity - pair.quantity);
+        return new InventorySlot(slot.ItemId, slot.Quantity - pair.quantity);
     }
 }

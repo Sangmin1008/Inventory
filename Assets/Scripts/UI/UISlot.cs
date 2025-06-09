@@ -11,6 +11,8 @@ public class UISlot : MonoBehaviour
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemQuantity;
     private ItemRegistrySO _itemRegistry;
+    
+    public int Index { get; set; }
 
     private void Start()
     {

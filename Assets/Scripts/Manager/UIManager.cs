@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class UIManager : Singleton<UIManager>
 {
-    [SerializeField] private UIMainMenu mainMenuPanel;
-    [SerializeField] private UIStatus statusPanel;
-    [SerializeField] private UIInventory inventoryPanel;
+    public UIMainMenu MainMenuUI;
+    public UIStatus StatusUI;
+    public UIInventory InventoryUI;
     
     private Dictionary<UIType, GameObject> _uiMap;
 
@@ -15,9 +16,9 @@ public class UIManager : Singleton<UIManager>
         base.Awake();
         _uiMap = new Dictionary<UIType, GameObject>()
         {
-            { UIType.MainMenu, mainMenuPanel.gameObject },
-            { UIType.Status, statusPanel.gameObject },
-            { UIType.Inventory, inventoryPanel.gameObject }
+            { UIType.MainMenu, MainMenuUI.gameObject },
+            { UIType.Status, StatusUI.gameObject },
+            { UIType.Inventory, InventoryUI.gameObject }
         };
     }
 
