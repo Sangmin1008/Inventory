@@ -12,6 +12,7 @@ public class UIInventory : MonoBehaviour
 
     private void Start()
     {
+        _slots = new List<UISlot>(InventoryManager.Instance.InitialSlotCount);
         Render();
     }
 

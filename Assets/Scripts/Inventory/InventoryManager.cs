@@ -5,13 +5,14 @@ using UnityEngine.Events;
 
 public class InventoryManager : Singleton<InventoryManager>
 {
-    [SerializeField] private int initialSlotCount = 20;
+    [SerializeField] private int initialSlotCount = 1;
     [SerializeField] private VoidEventChannelSO OnInventoryChanged;
-    public Inventory Inventory { get; private set; }
+    [field:SerializeField] public Inventory Inventory { get; private set; }
+    public int InitialSlotCount => initialSlotCount;
 
     protected override void Awake()
     {
         base.Awake();
-        Inventory = new Inventory(initialSlotCount);
+        //Inventory = new Inventory(initialSlotCount);
     }
 }

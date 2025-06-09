@@ -10,18 +10,11 @@ public class UISlot : MonoBehaviour
 {
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemQuantity;
-    private ItemRegistrySO _itemRegistry;
-    
-    public int Index { get; set; }
-
-    private void Start()
-    {
-        _itemRegistry = GameManager.Instance.ItemRegistry;
-    }
 
     public void Render(string itemID, int quantity)
     {
-        var itemData = _itemRegistry.GetItem(itemID);
+        Debug.Log($"아이템 아이디 : {itemID}");
+        var itemData = GameManager.Instance.ItemRegistry.GetItem(itemID);
 
         if (itemData != null)
         {
