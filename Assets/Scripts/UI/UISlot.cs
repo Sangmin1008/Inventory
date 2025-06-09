@@ -1,17 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UISlot : MonoBehaviour
 {
-    [SerializeField] private Image _itemIcon;
-    [SerializeField] private TextMeshProUGUI _itemQuantity;
+    [SerializeField] private Image itemIcon;
+    [SerializeField] private TextMeshProUGUI itemQuantity;
+    private ItemRegistrySO _itemRegistry;
 
-    public void Render(int itemId, int itemQuantity)
+    private void Start()
     {
-        //_itemIcon.sprite = ;
-        _itemQuantity.text = (itemQuantity > 0) ? "A" : string.Empty;
+        _itemRegistry = GameManager.Instance.ItemRegistry;
+    }
+
+    public void Render(string itemID, int quantity)
+    {
+        var itemData = _itemRegistry.GetItem(itemID);
+
+        if (itemData != null)
+        {
+            itemIcon.sprite = itemData.Icon;
+            itemIcon.enabled = true;
+            itemQuantity.text = quantity > 0 ? quantity.ToString() : "";
+        }
     }
 }

@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class UIInventory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private UISlot slotUIPrefab;
+    [SerializeField] private GameObject inventoryUIContent;
 
-    // Update is called once per frame
-    void Update()
+    private List<UISlot> _slots;
+
+    public void Render()
     {
         
     }
