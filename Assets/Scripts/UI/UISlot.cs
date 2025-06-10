@@ -3,14 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class UISlot : MonoBehaviour
+public class UISlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemQuantity;
     [SerializeField] private Outline outline;
+    [SerializeField] private IntegerEventChannelSO OnPointerEnterEvent;
     
     public int Index;
 
@@ -35,5 +37,15 @@ public class UISlot : MonoBehaviour
     {
         if (outline != null)
             outline.effectColor = color;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        OnPointerEnterEvent.Raise(Index);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        OnPointerEnterEvent.Raise(-1);
     }
 }

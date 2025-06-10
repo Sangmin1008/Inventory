@@ -18,7 +18,7 @@ public class VoidEventChannelSO : ScriptableObject
         }
         else
         {
-            Debug.Log($"[EventChannel: {name}] 이벤트 발생 (데이터: Void)");
+            //Debug.Log($"[EventChannel: {name}] 이벤트 발생 (데이터: Void)");
         }
 #endif
         OnEventRaised?.Invoke();

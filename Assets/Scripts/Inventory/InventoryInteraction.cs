@@ -12,35 +12,20 @@ public class InventoryInteraction : MonoBehaviour
     
     [Header("Event Channels")]
     [SerializeField] private VoidEventChannelSO OnInteract;
-    [SerializeField] private Vector2EventChannelSO OnLook;
     [SerializeField] private VoidEventChannelSO OnStatusChanged;
 
     
-    private PointerEventData _pointerEventData;
     private List<RaycastResult> _results = new List<RaycastResult>();
-    private Vector2 _mouse;
-    
-    private void Awake()
-    {
-        _pointerEventData = new PointerEventData(EventSystem.current);
-    }
+
 
     private void OnEnable()
     {
         OnInteract.RegisterListener(HandleClick);
-        //OnLook.RegisterListener(GetMousePosition);
     }
 
     private void OnDisable()
     {
         OnInteract.UnregisterListener(HandleClick);
-        OnLook.UnregisterListener(GetMousePosition);
-    }
-
-
-    private void GetMousePosition(Vector2 pos)
-    {
-        _mouse = pos;
     }
     
     private void HandleClick()
@@ -60,9 +45,6 @@ public class InventoryInteraction : MonoBehaviour
         }
             
         Debug.Log($"아이템 검출 {slotData.ItemId}");
-        //inventoryController.RemoveItem(slotData.ItemId, 1);
-        // TODO 해당 아이템을 들고와서 ItemUse를 사용하기
-
         UseItem(slotData.ItemId);
     }
 

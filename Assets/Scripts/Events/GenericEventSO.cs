@@ -16,7 +16,7 @@ public class GenericEventChannelSO<T> : ScriptableObject
         }
         else
         {
-            Debug.Log($"[EventChannel: {name}] 이벤트 발생 (데이터: {data})");
+            //Debug.Log($"[EventChannel: {name}] 이벤트 발생 (데이터: {data})");
         }
 #endif
         OnEventRaised?.Invoke(data);
