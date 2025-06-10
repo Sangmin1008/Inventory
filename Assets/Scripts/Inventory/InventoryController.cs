@@ -64,4 +64,13 @@ public class InventoryController : MonoBehaviour
         Debug.LogWarning("제거할 아이템이 없음");
         return false;
     }
+    
+    public InventorySlot GetSlot(int index)
+    {
+        if (index >= 0 && index < _inventory.Slots.Count)
+            return _inventory.Slots[index];
+
+        Debug.LogWarning("잘못된 인덱스 접근 " + index);
+        return InventorySlot.Empty;
+    }
 }

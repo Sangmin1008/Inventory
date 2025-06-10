@@ -31,6 +31,7 @@ public class UIInventory : MonoBehaviour
             var slotData = inventory.Slots[i];
             var slotUI = Instantiate(slotUIPrefab, inventoryUIContent);
             slotUI.Render(slotData.ItemId, slotData.Quantity);
+            slotUI.Index = i;
             _slots.Add(slotUI);
         }
     }

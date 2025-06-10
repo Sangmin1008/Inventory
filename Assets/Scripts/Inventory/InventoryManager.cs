@@ -14,5 +14,6 @@ public class InventoryManager : Singleton<InventoryManager>
     {
         base.Awake();
         //Inventory = new Inventory(initialSlotCount);
+        OnInventoryChanged.RegisterListener(UIManager.Instance.InventoryUI.Render);
     }
 }

@@ -34,4 +34,22 @@ public class ItemRegistrySO : ScriptableObject
                 return kv.Key;
         return null;
     }
+    
+#if UNITY_EDITOR
+    public void ClearItems()
+    {
+        items.Clear();
+    }
+
+    public void AddItem(GenericItemDataSO item)
+    {
+        if (!items.Contains(item))
+            items.Add(item);
+    }
+
+    public int GetItemCount()
+    {
+        return items.Count;
+    }
+#endif
 }

@@ -14,7 +14,6 @@ public class GenericItemDataSO : ScriptableObject
 
     [Header("Classification")]
     [SerializeField] private ItemType type;
-    [SerializeField] private int maxStack = 1;
 
     [Header("Trait")]
     [SerializeField] private List<ScriptableObject> traits;
@@ -24,7 +23,6 @@ public class GenericItemDataSO : ScriptableObject
     public string Description => description;
     public Sprite Icon => icon;
     public ItemType ItemType => type;
-    public int MaxStack => maxStack;
 
     public void UseItem()
     {
