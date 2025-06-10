@@ -16,7 +16,6 @@ MonoBehaviour:
   itemName: Apple
   description: "\uCCB4\uB825\uC744 30 \uD68C\uBCF5\uC2DC\uCF1C\uC90D\uB2C8\uB2E4."
   icon: {fileID: 21300000, guid: da7129ed6a246f048a49d8d97de2d2d4, type: 3}
-  type: 1
-  maxStack: 64
+  type: 0
   traits:
   - {fileID: 11400000, guid: a80535c642a3f85499d6e09db602a911, type: 2}

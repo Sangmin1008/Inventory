@@ -15,7 +15,6 @@ public class InventoryInteraction : MonoBehaviour
     private PointerEventData _pointerEventData;
     private List<RaycastResult> _results = new List<RaycastResult>();
     private Vector2 _mouse;
-    private int _rightDownSlotUIIndex = -1;
     
     private void Awake()
     {
@@ -57,7 +56,10 @@ public class InventoryInteraction : MonoBehaviour
         }
             
         Debug.Log($"아이템 검출 {slotData.ItemId}");
-        inventoryController.RemoveItem(slotData.ItemId, 1);
+        //inventoryController.RemoveItem(slotData.ItemId, 1);
+        // TODO 해당 아이템을 들고와서 ItemUse를 사용하기
+
+        inventoryController.UseItem(slotData.ItemId);
     }
 
     private bool TryRaycastSlotUI(out UISlot slotUI)

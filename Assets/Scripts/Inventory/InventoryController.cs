@@ -73,4 +73,55 @@ public class InventoryController : MonoBehaviour
         Debug.LogWarning("잘못된 인덱스 접근 " + index);
         return InventorySlot.Empty;
     }
+
+    public void UseItem(string itemID)
+    {
+        var itemData = GameManager.Instance.ItemRegistry.GetItem(itemID);
+        itemData.UseItem();
+
+        if (itemData.ItemType == ItemType.Consumable)
+        {
+            Debug.Log($"{itemData.ItemName} 소비!");
+            RemoveItem(itemID, 1);
+        }
+        else
+        {
+            SelectItem(itemID);
+        }
+    }
+
+    private void SelectItem(string itemID)
+    {
+        var itemData = GameManager.Instance.ItemRegistry.GetItem(itemID);
+
+        switch (itemData.ItemType)
+        {
+            case ItemType.Weapon:
+                if (InventoryManager.Instance.EquippedWeaponId == itemID)
+                {
+                    InventoryManager.Instance.EquippedWeaponId = null;
+                    Debug.Log("무기 해제됨: " + itemID);
+                }
+                else
+                {
+                    InventoryManager.Instance.EquippedWeaponId = itemID;
+                    Debug.Log("무기 장착됨: " + itemID);
+                }
+                break;
+
+            case ItemType.Armor:
+                if (InventoryManager.Instance.EquippedArmorId == itemID)
+                {
+                    InventoryManager.Instance.EquippedArmorId = null;
+                    Debug.Log("방어구 해제됨: " + itemID);
+                }
+                else
+                {
+                    InventoryManager.Instance.EquippedArmorId = itemID;
+                    Debug.Log("방어구 장착됨: " + itemID);
+                }
+                break;
+        }
+        OnInventoryChanged?.Raise();
+    }
 }

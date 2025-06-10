@@ -24,12 +24,13 @@ public class UIManager : Singleton<UIManager>
 
     public void ShowUI(UIType type)
     {
-        foreach (var ui in _uiMap.Values)
-        {
-            ui.SetActive(false);
-        }
-        
         if (_uiMap.TryGetValue(type, out GameObject targetUI))
             targetUI.SetActive(true);
+    }
+
+    public void CloseUI(UIType type)
+    {
+        if (_uiMap.TryGetValue(type, out GameObject targetUI))
+            targetUI.SetActive(false);
     }
 }

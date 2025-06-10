@@ -9,8 +9,16 @@ public class ItemRegistrySOEditor : Editor
         base.OnInspectorGUI();
 
         ItemRegistrySO registry = (ItemRegistrySO)target;
+        
+        GUILayout.Space(10);
+        
+        GUIStyle buttonStyle = new GUIStyle(GUI.skin.button);
+        buttonStyle.fontStyle = FontStyle.Bold;
+        buttonStyle.fixedHeight = 32;
+        buttonStyle.fontSize = 12;
+        buttonStyle.margin = new RectOffset(4, 4, 10, 10);
 
-        if (GUILayout.Button("아이템 자동 등록", GUILayout.Height(40)))
+        if (GUILayout.Button("아이템 자동 등록", buttonStyle))
         {
             string[] guids = AssetDatabase.FindAssets("t:GenericItemDataSO", new[] { "Assets/Datas/ItemData" });
 

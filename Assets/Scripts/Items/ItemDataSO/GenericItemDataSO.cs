@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType   { Resource, Consumable, Weapon, Armor }
+public enum ItemType   { Consumable, Weapon, Armor }
 [CreateAssetMenu(fileName = "NewGenericItemData", menuName = "Scriptable Objects/Item/Generic Item Data")]
 public class GenericItemDataSO : ScriptableObject
 {

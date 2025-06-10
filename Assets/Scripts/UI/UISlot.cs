@@ -10,6 +10,7 @@ public class UISlot : MonoBehaviour
 {
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemQuantity;
+    [SerializeField] private Outline outline;
     
     public int Index;
 
@@ -28,5 +29,11 @@ public class UISlot : MonoBehaviour
             itemIcon.enabled = false;
             itemQuantity.text = string.Empty;
         }
+    }
+    
+    public void SetOutlineColor(Color color)
+    {
+        if (outline != null)
+            outline.effectColor = color;
     }
 }

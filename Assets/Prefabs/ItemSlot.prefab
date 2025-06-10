@@ -221,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 5850885880124734170}
   itemQuantity: {fileID: 4578364741937055192}
+  outline: {fileID: 5311574319311819951}
   Index: 0
 --- !u!222 &1173719127319117400
 CanvasRenderer:
