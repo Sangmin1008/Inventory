@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
 {
@@ -60,4 +61,6 @@ public class UIInventory : MonoBehaviour
         return itemId == InventoryManager.Instance.EquippedWeaponId ||
                itemId == InventoryManager.Instance.EquippedArmorId;
     }
+
+    public void CloseUI() => UIManager.Instance.CloseUI(UIType.Inventory);
 }

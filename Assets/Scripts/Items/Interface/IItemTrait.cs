@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IItemTrait
 {
     void Apply();
+    void Unapply();
 }

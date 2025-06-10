@@ -23,6 +23,7 @@ public class GenericItemDataSO : ScriptableObject
     public string Description => description;
     public Sprite Icon => icon;
     public ItemType ItemType => type;
+    public List<ScriptableObject> Traits => traits;
 
     public void UseItem()
     {

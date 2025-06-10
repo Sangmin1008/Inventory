@@ -77,10 +77,11 @@ public class InventoryController : MonoBehaviour
     public void UseItem(string itemID)
     {
         var itemData = GameManager.Instance.ItemRegistry.GetItem(itemID);
-        itemData.UseItem();
+        
 
         if (itemData.ItemType == ItemType.Consumable)
         {
+            itemData.UseItem();
             Debug.Log($"{itemData.ItemName} 소비!");
             RemoveItem(itemID, 1);
         }
@@ -97,6 +98,16 @@ public class InventoryController : MonoBehaviour
         switch (itemData.ItemType)
         {
             case ItemType.Weapon:
+                if (!String.IsNullOrEmpty(InventoryManager.Instance.EquippedWeaponId))
+                {
+                    var prevWeapon = GameManager.Instance.ItemRegistry.GetItem(InventoryManager.Instance.EquippedWeaponId);
+                    foreach (var trait in prevWeapon.Traits)
+                    {
+                        if (trait is IItemTrait itemTrait)
+                            itemTrait.Unapply();
+                    }
+                }
+                
                 if (InventoryManager.Instance.EquippedWeaponId == itemID)
                 {
                     InventoryManager.Instance.EquippedWeaponId = null;
@@ -106,10 +117,21 @@ public class InventoryController : MonoBehaviour
                 {
                     InventoryManager.Instance.EquippedWeaponId = itemID;
                     Debug.Log("무기 장착됨: " + itemID);
+                    itemData.UseItem();
                 }
                 break;
 
             case ItemType.Armor:
+                if (!String.IsNullOrEmpty(InventoryManager.Instance.EquippedArmorId))
+                {
+                    var prevArmor = GameManager.Instance.ItemRegistry.GetItem(InventoryManager.Instance.EquippedArmorId);
+                    foreach (var trait in prevArmor.Traits)
+                    {
+                        if (trait is IItemTrait itemTrait)
+                            itemTrait.Unapply();
+                    }
+                }
+                
                 if (InventoryManager.Instance.EquippedArmorId == itemID)
                 {
                     InventoryManager.Instance.EquippedArmorId = null;
@@ -119,6 +141,7 @@ public class InventoryController : MonoBehaviour
                 {
                     InventoryManager.Instance.EquippedArmorId = itemID;
                     Debug.Log("방어구 장착됨: " + itemID);
+                    itemData.UseItem();
                 }
                 break;
         }

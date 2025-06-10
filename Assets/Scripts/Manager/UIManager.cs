@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 
 public class UIManager : Singleton<UIManager>
 {
+    [Header("UIs")]
     public UIMainMenu MainMenuUI;
     public UIStatus StatusUI;
     public UIInventory InventoryUI;

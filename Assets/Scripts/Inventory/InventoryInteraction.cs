@@ -9,8 +9,12 @@ public class InventoryInteraction : MonoBehaviour
 {
     [SerializeField] private GraphicRaycaster graphicRaycaster;
     [SerializeField] private InventoryController inventoryController;
+    
+    [Header("Event Channels")]
     [SerializeField] private VoidEventChannelSO OnInteract;
     [SerializeField] private Vector2EventChannelSO OnLook;
+    [SerializeField] private VoidEventChannelSO OnStatusChanged;
+
     
     private PointerEventData _pointerEventData;
     private List<RaycastResult> _results = new List<RaycastResult>();
@@ -59,7 +63,7 @@ public class InventoryInteraction : MonoBehaviour
         //inventoryController.RemoveItem(slotData.ItemId, 1);
         // TODO 해당 아이템을 들고와서 ItemUse를 사용하기
 
-        inventoryController.UseItem(slotData.ItemId);
+        UseItem(slotData.ItemId);
     }
 
     private bool TryRaycastSlotUI(out UISlot slotUI)
@@ -80,5 +84,11 @@ public class InventoryInteraction : MonoBehaviour
 
         slotUI = null;
         return false;
+    }
+
+    private void UseItem(string itemID)
+    {
+        inventoryController.UseItem(itemID);
+        OnStatusChanged.Raise();
     }
 }

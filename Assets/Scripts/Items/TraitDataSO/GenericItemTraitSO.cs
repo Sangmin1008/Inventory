@@ -11,6 +11,20 @@ public class GenericItemTraitSO<T> : ScriptableObject, IItemTrait
         eventChannelSO.Raise(data);
     }
 
+    public void Unapply()
+    {
+        if (typeof(T) == typeof(float))
+        {
+            float value = (float)(object)data;
+            float negative = -value;
+            eventChannelSO.Raise((T)(object)negative);
+        }
+        else
+        {
+            Debug.LogWarning("Unapply not supported for type " + typeof(T));
+        }
+    }
+
     protected void SetData(T value)
     {
         data = value;

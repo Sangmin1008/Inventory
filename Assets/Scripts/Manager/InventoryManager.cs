@@ -7,8 +7,12 @@ using System.Linq;
 
 public class InventoryManager : Singleton<InventoryManager>
 {
+    [Header("Initial Slots")]
     [SerializeField] private int initialSlotCount = 1;
+    
+    [Header("Event Channel")]
     public VoidEventChannelSO OnInventoryChanged;
+    
     [field:SerializeField] public Inventory Inventory { get; private set; }
     public int InitialSlotCount => initialSlotCount;
     public string EquippedWeaponId = null;
