@@ -5,12 +5,25 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
+    [Header("Event Channels")]
     [SerializeField] private VoidEventChannelSO OnInventoryChanged;
+    [SerializeField] private StringEventChannelSO OnInventoryAddItem;
+    
     private Inventory _inventory;
 
     private void Start()
     {
         _inventory = InventoryManager.Instance.Inventory;
+    }
+
+    private void OnEnable()
+    {
+        OnInventoryAddItem.RegisterListener(AddItem);
+    }
+
+    private void OnDisable()
+    {
+        OnInventoryAddItem.UnregisterListener(AddItem);
     }
 
     public bool AddItem(string itemID, int quantity = 1)
@@ -39,6 +52,8 @@ public class InventoryController : MonoBehaviour
         Debug.LogWarning("인벤토리 공간 부족");
         return false;
     }
+
+    public void AddItem(string itemID) => AddItem(itemID, 1);
 
     public bool RemoveItem(string itemID, int quantity = 1)
     {
