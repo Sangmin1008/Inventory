@@ -17,6 +17,7 @@ public class UIStatus : MonoBehaviour
         Render();
     }
 
+    // Status 변경 시 새로 Render
     public void Render()
     {
         attackNumberText.text = $"{StatusManager.Instance.Attack}(+{StatusManager.Instance.ExtraAttack})";

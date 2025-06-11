@@ -48,6 +48,7 @@ public class InventoryInteraction : MonoBehaviour
         UseItem(slotData.ItemId);
     }
 
+    // 인벤토리 상호작용을 Button이 아닌 Raycast 방식으로 구현
     private bool TryRaycastSlotUI(out UISlot slotUI)
     {
         _results.Clear();

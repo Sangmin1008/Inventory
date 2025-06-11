@@ -1,6 +1,7 @@
 using System;
 using UnityEngine.Serialization;
 
+// 아이템 슬롯은 구조체로 설계
 [Serializable]
 public struct InventorySlot
 {

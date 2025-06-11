@@ -19,6 +19,7 @@ public class UIInventory : MonoBehaviour
         Render();
     }
 
+    // 인벤토리 변경 시 새로 Render
     public void Render()
     {
         foreach (var slot in _slots)

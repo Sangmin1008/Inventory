@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 아이템 정보를 관리하는 ScriptableObject
 [CreateAssetMenu(fileName = "ItemRegistry", menuName = "Scriptable Objects/Item/Item Registry")]
 public class ItemRegistrySO : ScriptableObject
 {

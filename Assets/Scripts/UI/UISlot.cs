@@ -16,6 +16,7 @@ public class UISlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     
     public int Index;
 
+    // 슬롯 정보가 변경되면 새로 Render
     public void Render(string itemID, int quantity)
     {
         var itemData = GameManager.Instance.ItemRegistry.GetItem(itemID);
@@ -39,6 +40,9 @@ public class UISlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             outline.effectColor = color;
     }
 
+    
+    // 마우스가 슬롯 위에 들어오면 이벤트 발생
+    // 아이템 툴팁 패널 액티브 활성화
     public void OnPointerEnter(PointerEventData eventData)
     {
         OnPointerEnterEvent.Raise(Index);
